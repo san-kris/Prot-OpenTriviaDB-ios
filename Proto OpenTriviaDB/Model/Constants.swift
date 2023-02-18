@@ -9,8 +9,9 @@ import Foundation
 
 enum Constant{
     enum UserDefaults {
-        static let categoryKey = "TDBCategories"
+        static let userCategoryKey = "UserCategories"
         static let sessionIDKey = "TDBSessonID"
+        static let triviaDBCategoryMappingKey = "TDBCategories"
     }
     enum TriviaSession {
         static let successCode = 0
@@ -19,14 +20,10 @@ enum Constant{
     }
     enum TriviaCategory {
         enum DefaultCategory {
-            static let title = "General Knowkedge"
-            static let subTitle = "Difficulty: Medium"
-            static let url = "https://opentdb.com/api.php?amount=20&category=9&difficulty=easy"
+            static let categoryID = 9
+            static let difficulty = "easy"
         }
-        static let questionListURL = "https://opentdb.com/api.php"
-        static let defaultQuestionCount = "20"
-        static let defaultCategory = "9"
-        static let defaultDifficulty = "easy"
+        static let categoryURL = "https://opentdb.com/api_category.php"
     }
     enum TriviaQuestion {
         static let successCode = 0

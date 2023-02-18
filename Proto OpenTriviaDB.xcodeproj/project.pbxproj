@@ -21,7 +21,9 @@
 		AADF572F299C0BC100DDB7E4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF572E299C0BC100DDB7E4 /* Constants.swift */; };
 		AADF5733299C3E3600DDB7E4 /* TriviaBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF5732299C3E3600DDB7E4 /* TriviaBrain.swift */; };
 		AADF5735299D06E100DDB7E4 /* TriviaDBConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF5734299D06E100DDB7E4 /* TriviaDBConnection.swift */; };
-		AADF5739299D6FE600DDB7E4 /* TriviaCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF5738299D6FE600DDB7E4 /* TriviaCategory.swift */; };
+		AADF573B299EB7A600DDB7E4 /* TriviaDBCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF573A299EB7A600DDB7E4 /* TriviaDBCategories.swift */; };
+		AADF573D299EDF9B00DDB7E4 /* CategoryBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF573C299EDF9B00DDB7E4 /* CategoryBrain.swift */; };
+		AADF573F29A14D7400DDB7E4 /* AddNewCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF573E29A14D7400DDB7E4 /* AddNewCategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +43,9 @@
 		AADF572E299C0BC100DDB7E4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AADF5732299C3E3600DDB7E4 /* TriviaBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaBrain.swift; sourceTree = "<group>"; };
 		AADF5734299D06E100DDB7E4 /* TriviaDBConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaDBConnection.swift; sourceTree = "<group>"; };
-		AADF5738299D6FE600DDB7E4 /* TriviaCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaCategory.swift; sourceTree = "<group>"; };
+		AADF573A299EB7A600DDB7E4 /* TriviaDBCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaDBCategories.swift; sourceTree = "<group>"; };
+		AADF573C299EDF9B00DDB7E4 /* CategoryBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBrain.swift; sourceTree = "<group>"; };
+		AADF573E29A14D7400DDB7E4 /* AddNewCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 			children = (
 				AA7514FF29985751000971BB /* TriviaViewController.swift */,
 				AADF5728299A959400DDB7E4 /* CategoryTableViewController.swift */,
+				AADF573E29A14D7400DDB7E4 /* AddNewCategoryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -113,7 +118,8 @@
 				AADF572E299C0BC100DDB7E4 /* Constants.swift */,
 				AADF5732299C3E3600DDB7E4 /* TriviaBrain.swift */,
 				AADF5734299D06E100DDB7E4 /* TriviaDBConnection.swift */,
-				AADF5738299D6FE600DDB7E4 /* TriviaCategory.swift */,
+				AADF573A299EB7A600DDB7E4 /* TriviaDBCategories.swift */,
+				AADF573C299EDF9B00DDB7E4 /* CategoryBrain.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -194,12 +200,14 @@
 				AA75150029985751000971BB /* TriviaViewController.swift in Sources */,
 				AADF5733299C3E3600DDB7E4 /* TriviaBrain.swift in Sources */,
 				AA7514FC29985751000971BB /* AppDelegate.swift in Sources */,
-				AADF5739299D6FE600DDB7E4 /* TriviaCategory.swift in Sources */,
 				AADF5735299D06E100DDB7E4 /* TriviaDBConnection.swift in Sources */,
 				AA75151329985A65000971BB /* Trivia.swift in Sources */,
 				AADF572D299AC01500DDB7E4 /* OpenTriviaDBSession.swift in Sources */,
 				AA7514FE29985751000971BB /* SceneDelegate.swift in Sources */,
 				AADF5729299A959400DDB7E4 /* CategoryTableViewController.swift in Sources */,
+				AADF573B299EB7A600DDB7E4 /* TriviaDBCategories.swift in Sources */,
+				AADF573F29A14D7400DDB7E4 /* AddNewCategoryViewController.swift in Sources */,
+				AADF573D299EDF9B00DDB7E4 /* CategoryBrain.swift in Sources */,
 				AADF572F299C0BC100DDB7E4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -25,7 +25,7 @@ struct TriviaDBConnection {
             print("URLComponent failed to create URL")
             return
         }
-        print(finalURL)
+        print("Final URL w/ parameters: \(finalURL)")
         
         // 3. create Sessioon Tas
         let dataTask = URLSession.shared.dataTask(with: finalURL, completionHandler: completionHandler)

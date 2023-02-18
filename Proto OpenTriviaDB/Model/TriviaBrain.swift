@@ -13,8 +13,14 @@ class TriviaBrain{
     private var triviaSession: OpenTriviaDBSession?
     private var triviaCategories: [TriviaCategory]?
     private var triviaQuestions: Trivia?
+    private let userCategories = CategoryBrain()
     
     private init() {}
+    
+    func getUserCategories() -> [[String:Any]]?{
+        print("Fetching user categories")
+        return userCategories.getUserCatagories()
+    }
     
     func getSession() -> String?{
         
@@ -42,60 +48,6 @@ class TriviaBrain{
         }
     }
     
-    func getCatagories() -> [[String : Any]]? {
-        // check if categories list is populated
-        if let triviaCategories{
-            return triviaCategories.compactMap({ category in
-                category.dictionary
-            })
-        } else {
-            // get the default UserDefaults object
-            let userDefaults = UserDefaults.standard
-            // Check if user default has session object stored
-            if let triviaCategoryData = userDefaults.object(forKey: Constant.UserDefaults.categoryKey) as? Data{
-                do{
-                    print("Categories found in User Default")
-                    triviaCategories = try JSONDecoder().decode([TriviaCategory].self, from: triviaCategoryData)
-                    if let triviaCategories{
-                        return triviaCategories.compactMap({ category in
-                            category.dictionary
-                        })
-                    } else {
-                        return nil
-                    }
-                } catch {
-                    print("Failed to decode Category: \(error)")
-                    return nil
-                }
-            } else {
-                // Create a new default category
-                let defaultCategory = TriviaCategory(title: Constant.TriviaCategory.DefaultCategory.title,
-                                                     subTitle: Constant.TriviaCategory.DefaultCategory.subTitle,
-                                                     urlString: Constant.TriviaCategory.DefaultCategory.url)
-                // Create empty category list
-                triviaCategories = []
-                // Add new category to list
-                triviaCategories?.append(defaultCategory)
-                
-                if let triviaCategories{
-                    // encode trivia categorie list
-                    let encodedCategories = encodeData(data: triviaCategories)
-                    
-                    // Add new categry list to UserDefaults
-                    let userDefaults = UserDefaults.standard
-                    // Check if user default has session object stored
-                    userDefaults.set(encodedCategories, forKey: Constant.UserDefaults.categoryKey)
-
-                    return triviaCategories.compactMap({ category in
-                        category.dictionary
-                    })
-                } else {
-                    return nil
-                }
-            }
-            
-        }
-    }
     
     private func getNewTriviaSession() -> Void{
         // get new session ID

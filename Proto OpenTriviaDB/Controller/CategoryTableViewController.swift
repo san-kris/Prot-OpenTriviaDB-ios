@@ -9,7 +9,11 @@ import UIKit
 
 class CategoryTableViewController: UITableViewController {
 
-    var categories: [[String: Any]]?
+    var userCategories: [[String: Any]]?
+    
+    lazy private var addNewCategory: (addNewCategoryNavController: UINavigationController, addNewCategoryViewController: AddNewCategoryViewController) = {
+        return AddNewCategoryViewController.fromStoryboard()
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +32,18 @@ class CategoryTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("in ViewWillAppear")
-        categories = TriviaBrain.brain.getCatagories()
-        
+        // categories = TriviaBrain.brain.getCatagories()
+        userCategories = TriviaBrain.brain.getUserCategories()
     }
 
     
     @IBAction func addCategoryPressed(_ sender: UIBarButtonItem) {
         print("Add button pressed")
         print("Trivia Session ID \(TriviaBrain.brain.getSession() ?? "EMPTY")")
+        present(addNewCategory.addNewCategoryNavController, animated: true) {
+            print("Navigated to Add New Screen from Cat List")
+        }
+
         
     }
     
@@ -48,7 +56,7 @@ class CategoryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return categories?.count ?? 0
+        return userCategories?.count ?? 0
     }
 
     //MARK: - Table View Delegate
@@ -57,9 +65,9 @@ class CategoryTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TriviaCategooriesCell", for: indexPath)
         
         var cellConfiguration = cell.defaultContentConfiguration()
-        cellConfiguration.image = UIImage(systemName: "brain.head.profile")
-        cellConfiguration.text = categories?[indexPath.row]["title"] as? String ?? "Category Title Missing"
-        cellConfiguration.secondaryText = categories?[indexPath.row]["subTitle"] as? String ?? "Category Sub-Title Missing"
+        cellConfiguration.image = UIImage(systemName: userCategories?[indexPath.row]["image"] as? String ?? "brain.head.profile")
+        cellConfiguration.text = userCategories?[indexPath.row]["title"] as? String ?? "Category Title Missing"
+        cellConfiguration.secondaryText = userCategories?[indexPath.row]["subTitle"] as? String ?? "Category Sub-Title Missing"
         cellConfiguration.textProperties.color = .red
         cellConfiguration.secondaryTextProperties.color = .gray
         
