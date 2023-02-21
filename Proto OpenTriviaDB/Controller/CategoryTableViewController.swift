@@ -9,10 +9,20 @@ import UIKit
 
 class CategoryTableViewController: UITableViewController {
 
-    var userCategories: [[String: Any]]?
+    var userCategories: [[String: Any]]? {
+        didSet{
+            print("UserCategories updated. Updating table view")
+            tableView.reloadData()
+        }
+    }
     
     lazy private var addNewCategory: (addNewCategoryNavController: UINavigationController, addNewCategoryViewController: AddNewCategoryViewController) = {
-        return AddNewCategoryViewController.fromStoryboard()
+        // create new nav controller and VC fromo storyboard ID and set delegate
+        return AddNewCategoryViewController.fromStoryboard(delegate: self)
+    }()
+    
+    lazy private var triviaViewController: TriviaViewController = {
+        return TriviaViewController.fromStoryboard()
     }()
     
     override func viewDidLoad() {
@@ -58,8 +68,6 @@ class CategoryTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return userCategories?.count ?? 0
     }
-
-    //MARK: - Table View Delegate
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TriviaCategooriesCell", for: indexPath)
@@ -72,11 +80,37 @@ class CategoryTableViewController: UITableViewController {
         cellConfiguration.secondaryTextProperties.color = .gray
         
         cell.contentConfiguration  = cellConfiguration
-
+        
         return cell
     }
-    
 
 
-
+    //MARK: - Table View Delegate
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Deselect the row
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        triviaViewController.categoryImage = userCategories?[indexPath.row]["image"] as? String ?? "brain.head.profile"
+        triviaViewController.categoryID = userCategories?[indexPath.row]["categoryID"] as? Int ?? 9
+        triviaViewController.categoryDifficulty = userCategories?[indexPath.row]["difficulty"] as? String ?? "easy"
+        triviaViewController.categoryName = userCategories?[indexPath.row]["title"] as? String ?? "General Knoowledge"
+        
+        navigationController?.pushViewController(triviaViewController, animated: true)
+    }
 }
+
+extension CategoryTableViewController: AddNewCategoryViewControllerDelegate{
+    func didAddCategory(_ controller: AddNewCategoryViewController, category: String?, difficulty: String?) {
+        // Do nothing if either category or difficulty is blank
+        guard let category, let difficulty else {return}
+        print("Add New Cat Delegate called with \(category) and \(difficulty)")
+        // Add new Category and difficulty level in storage and update the Dict
+        let userCategories = TriviaBrain.brain.addNewCategory(category: category, difficulty: difficulty)
+        if let userCategories{
+            self.userCategories = userCategories
+        }
+    }
+    
+    
+}
+

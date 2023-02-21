@@ -22,6 +22,11 @@ class TriviaBrain{
         return userCategories.getUserCatagories()
     }
     
+    func addNewCategory(category: String, difficulty: String) -> [[String:Any]]?{
+        print("Fetching user categories")
+        return userCategories.addNewCategory(category: category, difficulty: difficulty)
+    }
+    
     func getSession() -> String?{
         
         // If triviaSession is not nill, then get the session ID from instance

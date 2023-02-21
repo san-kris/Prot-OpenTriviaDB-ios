@@ -8,18 +8,43 @@
 import UIKit
 
 class TriviaViewController: UIViewController {
-
+    
+    var categoryID: Int?
+    var categoryName: String?
+    var categoryDifficulty: String?
+    var categoryImage: String?
+    
+    private var triviaQuestions: Trivia?
+    
+    @IBOutlet weak var triviaImage: UIImageView!
+    @IBOutlet weak var triviaTitleLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var triviaSubTitleLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
-    @IBAction func readPressed(_ sender: UIButton) {
-        print("Read button pressed")
-        getTriviaQuestions()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let categoryImage,  let categoryName, let categoryDifficulty{
+            triviaImage.image = UIImage(systemName: categoryImage)
+            triviaTitleLabel.text = categoryName
+            triviaSubTitleLabel.text = categoryDifficulty
+        }
         
     }
+    
+    static func fromStoryboard() -> TriviaViewController{
+        // Creates a new storyboard instance with name Main
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        // Create the navController with name "AddNewCategoryNavController"
+        let viewController = storyboard.instantiateViewController(withIdentifier: "TriviaViewController") as! TriviaViewController
+        
+        return viewController
+    }
+    
 }
 
 func getTriviaQuestions() -> Void {

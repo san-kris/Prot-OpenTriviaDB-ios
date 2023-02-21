@@ -21,6 +21,7 @@ enum Constant{
     enum TriviaCategory {
         enum DefaultCategory {
             static let categoryID = 9
+            static let categoryName = "General Knowledge"
             static let difficulty = "easy"
         }
         static let categoryURL = "https://opentdb.com/api_category.php"

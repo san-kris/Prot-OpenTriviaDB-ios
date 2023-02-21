@@ -12,6 +12,10 @@ class CategoryBrain {
     var userCategories: [TriviaCategory]?
     var categoriesFromTriviaDB: TriviaDBCategories?
     
+    
+    
+    static let difficultyOptions: [String] = ["Easy", "Medium", "Hard"]
+    
     init() {
         getCategoriesFromTriviaDB()
     }
@@ -40,37 +44,55 @@ class CategoryBrain {
                     return nil
                 }
             } else {
-                // Create a new default category
-                let defaultCategory = TriviaCategory(categoryID: Constant.TriviaCategory.DefaultCategory.categoryID,
-                                                     difficulty: Constant.TriviaCategory.DefaultCategory.difficulty)
-                // Create empty category list
-                userCategories = []
-                // Add new category to list
-                userCategories?.append(defaultCategory)
+                return addNewCategory(category: Constant.TriviaCategory.DefaultCategory.categoryName,
+                                      difficulty: Constant.TriviaCategory.DefaultCategory.difficulty)
                 
-                if let userCategories{
-                    do{
-                        // encode trivia categorie list
-                        let encodedCategories = try JSONEncoder().encode(userCategories)
-                        
-                        // Add new categry list to UserDefaults
-                        let userDefaults = UserDefaults.standard
-                        // Check if user default has session object stored
-                        userDefaults.set(encodedCategories, forKey: Constant.UserDefaults.userCategoryKey)
-                        
-                    } catch {
-                        print("Failed to encode categories: \(error)")
-                    }
-                    
-                    return userCategories.compactMap({ category in
-                        category.dictionary
-                    })
-                } else {
-                    return nil
-                }
             }
             
         }
+    }
+    
+    func addNewCategory(category: String, difficulty: String) -> [[String : Any]]? {
+        
+        // get Category ID from TriviaDB
+        let categoryID = TriviaDBCategories.getCategoryID(forName: category)
+        
+        guard let categoryID else {
+            print("Category was not found")
+            return nil
+        }
+        
+        // Create a new default category
+        let newCategory = TriviaCategory(categoryID: categoryID,
+                                         difficulty: difficulty)
+        if userCategories == nil{
+            // Create empty category list
+            userCategories = []
+        }
+        // Add new category to list
+        userCategories?.append(newCategory)
+        
+        if let userCategories{
+            do{
+                // encode trivia categorie list
+                let encodedCategories = try JSONEncoder().encode(userCategories)
+                
+                // Add new categry list to UserDefaults
+                let userDefaults = UserDefaults.standard
+                // Check if user default has session object stored
+                userDefaults.set(encodedCategories, forKey: Constant.UserDefaults.userCategoryKey)
+                
+            } catch {
+                print("Failed to encode categories: \(error)")
+            }
+            
+            return userCategories.compactMap({ category in
+                category.dictionary
+            })
+        } else {
+            return nil
+        }
+        
     }
     
     private func getCategoriesFromTriviaDB() -> Void{
