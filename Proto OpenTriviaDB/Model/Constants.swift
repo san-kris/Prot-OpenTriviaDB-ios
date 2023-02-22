@@ -22,7 +22,7 @@ enum Constant{
         enum DefaultCategory {
             static let categoryID = 9
             static let categoryName = "General Knowledge"
-            static let difficulty = "easy"
+            static let difficulty = "Easy"
         }
         static let categoryURL = "https://opentdb.com/api_category.php"
     }
@@ -30,8 +30,8 @@ enum Constant{
         static let successCode = 0
         static let questionListURL = "https://opentdb.com/api.php"
         static let defaultQuestionCount = "20"
-        static let defaultCategory = "9"
-        static let defaultDifficulty = "easy"
+        static let defaultCategory = 9
+        static let defaultDifficulty = "Easy"
     }
 
 }

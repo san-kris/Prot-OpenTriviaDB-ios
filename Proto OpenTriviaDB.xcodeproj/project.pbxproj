@@ -15,6 +15,7 @@
 		AA75150829985753000971BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA75150629985753000971BB /* LaunchScreen.storyboard */; };
 		AA75151329985A65000971BB /* Trivia.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA75151229985A65000971BB /* Trivia.swift */; };
 		AA7515152999754A000971BB /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7515142999754A000971BB /* Restaurant.swift */; };
+		AAA74AC929A641DA00FA14E5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA74AC829A641DA00FA14E5 /* StringExtension.swift */; };
 		AADF5729299A959400DDB7E4 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF5728299A959400DDB7E4 /* CategoryTableViewController.swift */; };
 		AADF572B299AB47700DDB7E4 /* OpenTriviaDB-API-Options.json in Resources */ = {isa = PBXBuildFile; fileRef = AADF572A299AB47700DDB7E4 /* OpenTriviaDB-API-Options.json */; };
 		AADF572D299AC01500DDB7E4 /* OpenTriviaDBSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF572C299AC01500DDB7E4 /* OpenTriviaDBSession.swift */; };
@@ -37,6 +38,7 @@
 		AA75150929985753000971BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA75151229985A65000971BB /* Trivia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trivia.swift; sourceTree = "<group>"; };
 		AA7515142999754A000971BB /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		AAA74AC829A641DA00FA14E5 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		AADF5728299A959400DDB7E4 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		AADF572A299AB47700DDB7E4 /* OpenTriviaDB-API-Options.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "OpenTriviaDB-API-Options.json"; sourceTree = "<group>"; };
 		AADF572C299AC01500DDB7E4 /* OpenTriviaDBSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenTriviaDBSession.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				AADF5734299D06E100DDB7E4 /* TriviaDBConnection.swift */,
 				AADF573A299EB7A600DDB7E4 /* TriviaDBCategories.swift */,
 				AADF573C299EDF9B00DDB7E4 /* CategoryBrain.swift */,
+				AAA74AC829A641DA00FA14E5 /* StringExtension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				AA75151329985A65000971BB /* Trivia.swift in Sources */,
 				AADF572D299AC01500DDB7E4 /* OpenTriviaDBSession.swift in Sources */,
 				AA7514FE29985751000971BB /* SceneDelegate.swift in Sources */,
+				AAA74AC929A641DA00FA14E5 /* StringExtension.swift in Sources */,
 				AADF5729299A959400DDB7E4 /* CategoryTableViewController.swift in Sources */,
 				AADF573B299EB7A600DDB7E4 /* TriviaDBCategories.swift in Sources */,
 				AADF573F29A14D7400DDB7E4 /* AddNewCategoryViewController.swift in Sources */,

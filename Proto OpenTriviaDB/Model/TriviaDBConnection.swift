@@ -8,7 +8,7 @@
 import Foundation
 
 struct TriviaDBConnection {
-    static func getData(url: String, parameters: [String: Any]?, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> Void{
+    static func getData(url: String, parameters: [String: String]?, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> Void{
         // 1. create URL endpoint
         var urlComp = URLComponents(string: url)
         
@@ -16,7 +16,7 @@ struct TriviaDBConnection {
         if let parameters = parameters{
             var queryItems: [URLQueryItem] = []
             for (key, value) in parameters{
-                let queryItem = URLQueryItem(name: key, value: value as? String)
+                let queryItem = URLQueryItem(name: key, value: value)
                 queryItems.append(queryItem)
             }
             urlComp?.queryItems = queryItems
